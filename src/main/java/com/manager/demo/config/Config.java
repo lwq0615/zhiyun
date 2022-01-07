@@ -32,7 +32,6 @@ public class Config implements WebMvcConfigurer {
         staticURI.add("/**/*.woff");
         staticURI.add("/**/*.jpg");
         staticURI.add("/**/*.png");
-        staticURI.add("/**/*.png");
         //不需要任何权限的接口
         ArrayList<String> passURI = new ArrayList<>();
         staticURI.add("/");
