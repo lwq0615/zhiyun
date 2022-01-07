@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+a:visited, a:link, a:hover, a:active, a {
+    color: black;
+    text-decoration: none;
+}
+
+#userBox::before {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100px;
+    background-image: url("../image/userBack.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+#uploadImg{
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+}
+#headImg {
+    display: block;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border: 5px solid white;
+    box-sizing: content-box;
+    object-fit: cover;
+    background-image: url("../image/nullImg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(10,45,48);
+}
+.uploadImg::before{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+    width: 70px;
+    height: 70px;
+    background-image: url("../image/carame.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor:pointer;
+}
+
+#userName{
+    text-align: center;
+    font-weight: 500;
+    margin: 8px auto;
+    font-size: 23px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.editBtn{
+    position: absolute;
+    right: 30px;
+    top: 110px;
+    height: 32px;
+    width: 96px;
+    background-color: #fc5531;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+}
+
+#userNameInput{
+    width: 200px;
+    border: none;
+    margin: 8px auto;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 500;
+    height: 25px;
+    line-height: 25px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    display:none;
+}
+
+#sumList{
+    display: flex;
+    list-style: none;
+    width: 300px;
+    margin: 0 auto;
+    padding-left: 0;
+}
+
+#sumList > li.list{
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+#sumList >li.list >div{
+    color: #999aaa;
+    font-size: 14px;
+    line-height: 16px;
+    height: 16px;
+}
+
+.count{
+    margin-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    color: #222226;
+    font-size: 20px;
+}
+
+#showMore{
+    text-align: center;
+    background-color: #dddddd;
+}
+
+
+
+

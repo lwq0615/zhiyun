@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工具</title>
+    <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/css/zui.min.css" rel="stylesheet"/>
+    <link href="/lib/calendar/zui.calendar.min.css" rel="stylesheet">
+    <link href="/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="/css/calendar.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="zc-nav"></div>
+
+<div style="display: flex">
+
+
+
+    <!--//左侧导航栏-->
+    <nav class="menu" data-ride="menu" style="min-width: 200px">
+        <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+            <li><a href="javascript:calendar()"><i class="icon icon-list-alt"></i>日历</a></li>
+        </ul>
+    </nav>
+    <!--日历-->
+    <div style="flex-grow: 1;padding: 10px" id="toolBox">
+        <div id="rlBox">
+            <div id="calendar" class="calendar"></div>
+        </div>
+
+
+
+
+
+
+        <!--新增日历事件弹窗-->
+        <div class="modal fade" id="add_event_box">
+            <div class="modal-dialog load-indicator" style="width: 800px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                        <h4 class="modal-title" id="add_event_box_date" style="color: #3280fc;"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="add-event-input-title" placeholder="标题">
+                        <div style="float: right;height: 30px;line-height: 30px;">
+                            <span style="font-size: 15px">时间&nbsp;</span>
+                            <input type="time" id="add-event-input-time">
+                        </div>
+                        <div style="margin-top: 10px;padding-left: 5px">
+                            <img src="/image/upload.png" class="add-event-input-btn" title="上传文件" onclick="document.getElementById('uploadFile').click()">
+                            <input type="file" id="uploadImg" style="display: none" onchange="uploadImgs(this)" multiple="multiple" accept=".png,.jpg,.bmp,jpeg,.tif,.jfif">
+                            <img src="/image/camera.png" class="add-event-input-btn" title="上传图片" onclick="document.getElementById('uploadImg').click()">
+                            <input type="file" id="uploadFile" style="display: none" onchange="uploadFiles(this)" multiple="multiple">
+                        </div>
+                        <div class="add-event-input-desc">
+                            <div class="add-event-input-files" id="add-event-input-fileList"></div>
+                            <div contenteditable="true" class="add-event-input-textarea"></div>
+                            <div class="add-event-input-imgs" id="add-event-input-imgList"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="add-event-input-delete" style="float: left;margin-left: 10px;">删除</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="add-event-input-submit">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<script src="/js/jquery.js"></script>
+<script src="/js/zui.min.js"></script>
+<script src="/js/utils/request.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/lib/calendar/zui.calendar.min.js"></script>
+<script src="/js/utils/DateUtil.js"></script>
+<script src="/js/calendar.js"></script>
+</body>
+</html>

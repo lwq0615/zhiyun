@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理</title>
+    <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/css/zui.min.css" rel="stylesheet"/>
+    <link href="/css/admin.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="zc-nav"></div>
+
+<div style="float: left;">
+    <nav class="menu" data-ride="menu" style="width: 200px;">
+        <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+            <li>
+                <a href="#"><i class="icon icon-server"></i>权限管理</a>
+                <ul>
+                    <li><a href="javascript:setPower()">权限配置</a></li>
+                    <li><a href="javascript:setRole()">角色管理</a></li>
+                    <li><a href="javascript:setUser()">用户管理</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="icon icon-user"></i>个人资料</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div style="margin-left: 200px;padding: 10px 0 10px 10px;display: none;overflow: auto" id="showBox">
+    <!--条件查询-->
+    <div id="search" style="display: grid;grid-template-columns: 1fr 1fr 1fr;justify-items: center;grid-row-gap:10px;margin-bottom: 10px;"></div>
+    <button class="btn btn-primary" id="addBtn" type="button" onclick="addOrEditDialog()">新增</button>
+    <button class="btn btn-danger" type="button" onclick="deleteDatas(checkDatas)">删除</button>
+    <button class="btn btn-primary" type="button" onclick="searchDatas()">查询</button>
+    <!--表格-->
+    <table class="table table-bordered" style="margin-top: 10px">
+        <thead id="tableHead">
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <!--分页器-->
+    <div style="text-align: center"><ul class="pager" data-ride="pager" id="myPager"></ul></div>
+</div>
+
+
+<!--//新增与编辑对话框-->
+<div class="modal fade" id="addOrEditDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">详细信息</h4>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid;grid-template-columns: 1fr 1fr;justify-items: center;grid-row-gap:10px"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="addOrEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//checkbox弹出框-->
+<div class="modal fade" id="checkBoxDialog">
+    <div class="modal-dialog" style="width: 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">请选择权限</h4>
+            </div>
+            <div class="modal-body">
+                <div id="checkBox" style="display: grid;grid-template-columns: 1fr 1fr 1fr;grid-row-gap:10px"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/zui.min.js"></script>
+<script src="/js/utils/request.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

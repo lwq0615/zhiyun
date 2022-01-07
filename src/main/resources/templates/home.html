@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/css/zui.min.css" rel="stylesheet"/>
+    <link href="/css/home.css" rel="stylesheet"/>
+    <link href="/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="zc-nav"></div>
+
+<div id="userBox" style="position: relative;height: 300px">
+    <button class="editBtn" id="edit" onclick="editUser()">编辑资料</button>
+    <button class="editBtn" id="editOver" onclick="editOver()" style="display: none">完成</button>
+    <div style="height: 70px;width: 100%; overflow: hidden">
+        <h2 style="margin: 20px auto 0 20px;color: white" id="userId"></h2>
+    </div>
+    <div id="uploadImg">
+        <img id="headImg">
+        <input type="file" accept=".bmp,.png,.tif,.JPEG,.jpg" id="upload" style="display: none" onchange="uploadHead()">
+    </div>
+    <h2 id="userName"></h2>
+    <input type="text" id="userNameInput">
+    <ul id="sumList">
+        <li class="list" onclick="location.href = '/album.html'">
+            <p class="count" id="photoCount"></p>
+            <div>上传的照片</div>
+        </li>
+        <li style="height: 24px;width: 1px;background: #e8e8ed;margin-top: 25px"></li>
+        <li class="list" onclick="location.href = '/music.html'">
+            <p class="count" id="musicCount"></p>
+            <div>上传的音乐</div>
+        </li>
+    </ul>
+</div>
+<div id="showMore"></div>
+
+
+
+<script src="/js/jquery.js"></script>
+<script src="/js/zui.min.js"></script>
+<script src="/js/utils/request.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

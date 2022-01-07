@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐</title>
+    <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/css/zui.min.css" rel="stylesheet"/>
+    <link href="/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="/css/music.css" rel="stylesheet"/>
+</head>
+<body style="height: 100%;background-image: linear-gradient(to bottom right,#5FB878,#145ccd)">
+
+<div class="zc-nav"></div>
+
+<audio id="audio"></audio>
+<a style="display: none" id="downloadLink"></a>
+<input type="file" id="fileUpload" style="display: none" onchange="uploadMusic()" multiple="multiple" accept=".mp3,.flac">
+
+<div style="margin:0 auto;width: 70%;height: 90%;min-width: 845px;box-shadow: 0 0 3px rgb(115, 115, 115);overflow: hidden;background-color: white" id="player">
+
+
+
+    <div id="header">
+        <div class="header1" style="width: 30%">
+            <div>
+                <span style="display: inline-block" id="lastMusicBtn">
+                    <i class="icon icon-backward" style="font-size: 20px"></i>
+                </span>
+                <span onclick="play()" style="display: inline-block">
+                    <i class="icon icon-play" style="font-size: 24px" id="playBtn"></i>
+                </span>
+                <span onclick="nextMusic()" style="display: inline-block">
+                    <i class="icon icon-forward" style="font-size: 20px"></i>
+                </span>
+            </div>
+            <div id="bar">
+                <div id="barCheck"></div>
+                <div id="barBtn"></div>
+            </div>
+        </div>
+        <img id="coverImg" style="height: 45px;width: 45px">
+        <div class="header2" style="width: 32%;background-color: rgb(244,244,244);position: relative">
+            <div style="height:85%;width:100%">
+                <div style="height: 100%;float: left">
+                    <div id="randomBtn" onclick="randomLoopClick(this)">
+                        <i class="icon icon-random" style="font-size: 18px;color:  rgb(115,115,115)"></i>
+                    </div>
+                    <div id="startTime">0:00</div>
+                </div>
+                <div style="height: 100%;margin: 0 28px">
+                    <div class="oneColText" id="musicName"></div>
+                    <div class="oneColText" id="musicArtist"></div>
+                </div>
+                <div style="height: 100%;float: right;transform: translateY(-38px)">
+                    <div id="loopBtn" onclick="randomLoopClick(this)">
+                        <i class="icon icon-refresh" style="font-size: 18px;color: rgb(115,115,115);float: right"></i>
+                    </div>
+                    <div id="endTime">0:00</div>
+                </div>
+            </div>
+            <div id="bar2">
+                <div id="barCheck2"></div>
+                <div id="barBtn2"></div>
+            </div>
+        </div>
+        <div class="header3" style="width: 34%;position: relative">
+            <div id="search">
+                <button id="searchWayBtn" onclick="document.getElementById('searchByBox').style.display = 'block'">
+                    <i class="icon icon-search"></i>
+                    <i class="icon icon-chevron-down"></i>
+                </button>
+                <div id="searchByBox">
+                    <p style="margin-left:22px;border-bottom: 1px solid #ddd;margin-bottom: 0">筛选方式：</p>
+                    <div onclick="checkSearchWay(this)" title="">
+                        <i class="icon icon-check" style="display: block"></i>
+                        <div>全部</div>
+                    </div>
+                    <div onclick="checkSearchWay(this)" title="name">
+                        <i class="icon icon-check"></i>
+                        <div>歌曲</div>
+                    </div>
+                    <div onclick="checkSearchWay(this)" title="artist">
+                        <i class="icon icon-check"></i>
+                        <div>艺人</div>
+                    </div>
+                    <div onclick="checkSearchWay(this)" title="album">
+                        <i class="icon icon-check"></i>
+                        <div>专辑</div>
+                    </div>
+                </div>
+                <div style="height: 22px;margin-left: 28px">
+                    <input id="searchName" type="text" placeholder="搜索" onkeydown="searchMusic(event)" onfocus="searchCheck(true)" onblur="searchCheck(false)">
+                </div>
+            </div>
+            <button id="playListBtn" data-toggle="popover" title="待播清单" onmousedown="btnClick(this,true)" onmouseup="btnClick(this,false)"><i class="icon icon-list-ol"></i></button>
+        </div>
+    </div>
+
+
+    <div id="operations">
+        <div class="operation" onclick="document.getElementById('fileUpload').click()">上传到歌曲</div>
+        <span id="msg" style="margin-left: 10px;"></span>
+    </div>
+
+
+    <div id="body" style="width: 100%">
+        <div id="sheet">
+            <div style="font-size: 10px;margin: 5px auto 3px 10px;cursor: default"><b>资料库</b></div>
+            <div id="class">
+                <div onclick="getListByArtist()" style="font-size: 14px;padding: 2px 0 2px 18px;cursor: default;user-select: none"><i class="icon icon-group"></i>艺人</div>
+                <div id="allMusic" onclick="getAllMusic()" style="font-size: 14px;padding: 2px 0 2px 18px;cursor: default;user-select: none"><i class="icon icon-headphones"></i>歌曲</div>
+            </div>
+            <div id="allPlayList" onmouseleave="this.children[1].style.display = 'none'" onmouseenter="this.children[1].style.display = 'inline-block'">
+                <b>所有歌单</b>
+                <b style="margin-left: 115px;display: none" onclick="showPlayLists(this)">隐藏</b>
+            </div>
+            <div oncontextmenu="rightClick('playLists')" style="max-height: 76%;height:76%;overflow: auto;user-select: none" id="playLists">
+            </div>
+        </div>
+        <div id="musicList" style="height: 100%;overflow: auto">
+            <table style="width: 100%;display: none;border-top: 1px solid #ddd" id="table" oncontextmenu="rightClick('table')">
+                <tr style="border-bottom: 1px solid #e5e5e5;width: 100%;white-space:nowrap;">
+                    <th class="tableName" style="min-width: 25px;max-width: 25px">
+                        <input id="checkAllBox" type="checkbox" onchange="checkMusics(this)" style="margin: 6px 0 0 5px">
+                        <div class="fengexian"></div>
+                    </th>
+                    <th class="tableName">名称<div class="fengexian moveCol"></div></th>
+                    <th class="tableName">时间<div class="fengexian moveCol"></div></th>
+                    <th class="tableName">艺人<div class="fengexian moveCol"></div></th>
+                    <th class="tableName">专辑<div class="fengexian moveCol"></div></th>
+                    <th style="min-width:30px;text-align: center" class="tableName"><i class="icon icon-plus"></i><div class="fengexian"></div></th>
+                    <th style="min-width:30px;text-align: center" class="tableName"><i class="icon icon-trash"></i><div class="fengexian"></div></th>
+                    <th class="tableName">播放次数</th>
+                </tr>
+            </table>
+            <div id="ArtistOrAlubmTable" style="width: 100%;height: 100%;display: none;">
+                <!--//艺人列表-->
+                <div id="ArtistList">
+                </div>
+                <!--专辑跟歌曲列表-->
+                <div id="albumAndMusic">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="rightMenu" style="display: none">
+    <div id="tableRightMenu">
+        <div onclick="downLoadMusics()">下载</div>
+        <div onclick="deleteMusics()">删除歌曲</div>
+        <div onclick="addMusics()">添加到歌单</div>
+        <div onclick="addMusicToPlayList(checkMusicList)">添加到播放列表</div>
+    </div>
+    <div id="playListsRightMenu">
+        <div onclick="addSheet()">新建歌单</div>
+        <div id="right-menu-playlist-delete">删除歌单</div>
+        <div id="right-menu-playlist-rename">重命名</div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal4">
+    <div class="modal-dialog" style="width: 600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">添加到歌单</h4>
+            </div>
+            <div class="modal-body moveBox" style="padding-top: 30px">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/zui.min.js"></script>
+<script src="/lib/uploader/zui.uploader.min.js"></script>
+<script src="/js/utils/ChinesePY.js"></script>
+<script src="/js/utils/request.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/music.js"></script>
+</body>
+</html>

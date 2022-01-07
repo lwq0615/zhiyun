@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册</title>
+    <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/css/zui.min.css" rel="stylesheet"/>
+    <link href="/css/album.css" rel="stylesheet"/>
+    <link href="/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="zc-nav"></div>
+
+<div id="box">
+    <div id="albumList" oncontextmenu="openRightMenu('albumsRightMenu')">
+        <ul class="nav nav-primary nav-stacked">
+        </ul>
+    </div>
+
+    <div class="panel" id="photos-panel">
+        <div id="myFileList" class="file-list" data-drag-placeholder="请拖拽文件到此处" style="max-height: 200px;overflow: auto"></div>
+        <div class="panel-heading">
+            <ul class="nav nav-simple" oncontextmenu="openRightMenu('albumsRightMenu')">
+                <div id="uploaderExample" class="uploader" style="display: inline-block;float: right;margin: 2px auto 0 auto">
+                    <button onclick="uploadFile()" style="outline: none" type="button" class="btn btn-primary uploader-btn-browse"><i class="icon icon-cloud-upload"></i> 上传照片</button>
+                </div>
+                <button class="btn btn-primary deleteBtn" type="button" onclick="checkPhoto()" style="float: right;margin: 2px 10px 2px 0;outline: none">
+                    <i class="icon icon-checked"></i> 选择图片</button>
+                <button onclick="movePhotos()" class="btn btn-primary moveBtn" type="button" data-toggle="modal" data-scroll-inside="true" data-target="#myModal4"  style="display:none;float: right;margin: 2px 10px 2px 0;outline: none">
+                    <i class="icon icon-folder-open"></i> 移动</button>
+                <button class="btn btn-danger deleteBtn2" type="button" onclick="deletePhotos()" style="display:none;float: right;margin: 2px 10px 2px 0;outline: none">
+                    <i class="icon icon-trash"></i> 删除</button>
+                <button onclick="cancelCheck()" class="btn cancelCheck" type="button" style="float: right;margin: 2px 10px 2px 0;display: none">取消</button>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <!--这里存放图片-->
+        </div>
+        <ul id="myPager" class="pager"
+            data-ride="pager" data-page="1"
+            data-elements="first_icon,nav,last_icon,size_menu,total_text"
+            data-rec-total="1000">
+        </ul>
+        <div style="display: inline-block;width: 100px;margin: 20px 0;">
+            <div class="input-group">
+                <input type="text" class="form-control pageNum" value="1">
+                <span class="input-group-btn">
+            <button style="outline: none" class="btn btn-default" type="button" onclick="goPage()">GO</button>
+          </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新建相册对话框-->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog" style="width: 400px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">新建相册</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-control has-label-left">
+                    <input id="newTypeNm" type="text" style="line-height: 32px" class="form-control" placeholder="">
+                    <label for="newTypeNm" class="input-control-label-left">相册名:</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" style="outline: none;" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" style="outline: none;" onclick="changeType()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--移动照片弹窗-->
+<div class="modal fade" id="myModal4">
+    <div class="modal-dialog" style="width: 600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">移动照片至</h4>
+            </div>
+            <div class="modal-body moveBox" style="padding-top: 30px">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--//鼠标右键菜单-->
+<div id="rightMenu" style="display: none">
+    <div id="albumsRightMenu">
+        <div onclick="$('#myModal2').modal('show', 'fit')">新建相册</div>
+        <div id="right-menu-album-delete">删除相册</div>
+        <div id="right-menu-album-rename">重命名</div>
+    </div>
+</div>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/zui.min.js"></script>
+<script src="/lib/uploader/zui.uploader.min.js"></script>
+<script src="/js/utils/request.js"></script>
+<script src="/js/utils/lazyLoad.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/album.js"></script>
+</body>
+</html>

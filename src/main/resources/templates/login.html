@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/css/zui.min.css" rel="stylesheet"/>
+    <link href="/css/login.css" rel="stylesheet"/>
+    <link href="/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+</head>
+<body style="height: 100%">
+
+<section>
+    <div id="box">
+        <div class="loginBox">
+            <h2 class="title">登&nbsp;&nbsp;录</h2>
+            <input type="text" placeholder="手机号" onkeydown="login(event)" id="username" class="input">
+            <input type="password" placeholder="密码" onkeydown="login(event)" id="password" class="input">
+            <p id="goRegister" onclick="zhuce()">点击注册</p>
+            <button id="loginBtn" class="loginBtn" onclick="login()">登&nbsp;&nbsp;录</button>
+        </div>
+        <div class="registerBox">
+            <h2 class="title">注&nbsp;&nbsp;册</h2>
+            <input type="text" placeholder="手机号" maxlength="11" id="username2" oninput="checkPhone(this)" class="input">
+            <input type="password" placeholder="密码" id="password2" oninput="checkPwd()" class="input">
+            <p class="checkPwd"></p>
+            <input type="password" placeholder="确认密码" id="password3" class="input">
+            <div style="width: 75%;margin: 0 auto;display: flex">
+                <input type="text" placeholder="验证码" id="yzCodeIn" class="input" style="margin: 0 20px 0 0;flex-grow: 1">
+                <canvas id="yzCode" width="80px" height="30px" onclick="loadYzCode()" style="cursor: pointer"></canvas>
+            </div>
+            <p id="goLogin" onclick="denglu()">去登录</p>
+            <button class="loginBtn" onclick="register()">注&nbsp;&nbsp;册</button>
+        </div>
+    </div>
+</section>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/zui.min.js"></script>
+<script src="/js/login.js"></script>
+</body>
+</html>

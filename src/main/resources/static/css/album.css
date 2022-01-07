@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#box {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#albumList {
+    width: 200px;
+    min-width: 200px;
+    height: 100%;
+    overflow: auto;
+}
+
+.panel {
+    text-align: center;
+    padding-bottom: 10px;
+    flex-grow: 1;
+    overflow: auto;
+    margin-bottom: 0;
+}
+
+#photos-panel .panel-body {
+    /*瀑布流布局*/
+    /*-moz-column-count:4;*/
+    /*!* Firefox *!*/
+    /*-webkit-column-count:4;*/
+    /*!* Safari 和 Chrome *!*/
+    /*column-count:4;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+#photos-panel .panel-body::before {
+    display: none;
+}
+
+.photoBox {
+    background: #eee;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+a.card {
+    -moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+a.card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/*//查看大图全屏*/
+img.lightbox-img {
+    height: 100%;
+    object-fit: contain;
+}
+
+#lightboxModal .modal-dialog {
+    height: 100%;
+    width: 100% !important;
+    margin: 0;
+}
+
+.modal-lightbox .controller > .icon,
+.modal-lightbox .controller > .icon,
+.file-rename-by-click {
+    display: none;
+}
+
+.deleteTypeBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.checkBox {
+    margin-left: 50px;
+    height: 50px;
+}
+
+div.checkIcon {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    width: 30px;
+    height: 30px;
+    z-index: 3;
+    background-image: url("../image/check.png");
+    background-size: 100% 100%;
+}
+
+.moveBox {
+    display: block;
+    padding-bottom: 30px;
+}
+
+
+#rightMenu {
+    background-color: rgb(242, 242, 242);
+    width: 200px;
+    position: absolute;
+    border: 1px solid #c8c8c8;
+    box-shadow: 2px 2px 2px rgb(115, 115, 115);
+    padding: 2px;
+    cursor: default;
+    user-select: none;
+    transition: opacity linear 0.1s;
+}
+
+#rightMenu > div > div {
+    padding: 0 25px;
+}
+
+#rightMenu > div > div:hover {
+    background-color: rgb(145, 201, 247);
+}

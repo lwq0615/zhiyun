@@ -1,0 +1,501 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+a:visited, a:link, a:hover, a:active, a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.clear::after,
+.clear::before {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.oneColText {
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#header {
+    display: flex;
+    justify-content: space-evenly;
+    height: 45px;
+    box-shadow: 0 0 2px #8395a8;
+    border-radius: 0;
+    background-image: linear-gradient(to bottom, rgb(240, 240, 240), rgb(220, 220, 220));
+}
+
+#header > div {
+    height: 100%;
+}
+
+div.header1 {
+    display: flex;
+    line-height: 45px;
+    padding-left: 25px;
+}
+
+.header1 > div > span > i::before {
+    color: #4f4f4f;
+    margin-top: 10px;
+    margin-left: 16px;
+}
+
+#operations {
+    height: 35px;
+    width: 100%;
+    text-align: center;
+}
+
+#operations > .operation {
+    margin: 4px 5px;
+    height: 27px;
+    padding: 0 10px;
+    line-height: 28px;
+    background-color: rgb(38, 135, 251);
+    border-radius: 4px;
+    font-size: 14px;
+    display: inline-block;
+    color: white;
+    cursor: default;
+    user-select: none;
+}
+
+
+#bar {
+    width: 32%;
+    height: 4px;
+    min-width: 44px;
+    background-color: #b3adad;
+    box-shadow: 0 0 1px slategrey;
+    margin-top: 20px;
+    border-radius: 2px;
+    display: flex;
+    margin-left: 25px;
+}
+
+#barCheck {
+    height: 100%;
+    border-radius: 2px;
+    background-color: #4f4f4f;
+}
+
+#barBtn {
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 1px slategrey;
+    transform: translateY(-5px);
+}
+
+#randomBtn {
+    height: 53%;
+    margin-left: 4px;
+    padding: 2px 3px 3px 4px;
+    border-radius: 2px;
+}
+
+#loopBtn {
+    height: 53%;
+    margin-right: 4px;
+    padding: 1px 5px 3px 4px;
+    border-radius: 2px;
+    width: 25px;
+}
+
+#startTime {
+    height: 47%;
+    margin-left: 4px;
+    line-height: 22px;
+    font-size: 10px;
+    display: inline-block;
+    transform: scale(0.8);
+}
+
+#endTime {
+    height: 47%;
+    margin-right: 4px;
+    line-height: 22px;
+    font-size: 10px;
+    display: inline-block;
+    transform: scale(0.8);
+}
+
+#musicName {
+    margin-bottom: 0;
+    font-size: 14px;
+    text-align: center;
+    height: 50%;
+    overflow: hidden;
+}
+
+#musicArtist {
+    font-size: 8px;
+    text-align: center;
+    color: #606266;
+    height: 50%;
+    overflow: hidden;
+}
+
+#bar2 {
+    width: 100%;
+    height: 4px;
+    background-color: #b3adad;
+    box-shadow: 0 0 1px slategrey;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
+
+#barCheck2 {
+    height: 4px;
+    background-color: #4f4f4f;
+}
+
+#barBtn2 {
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 1px slategrey;
+    transform: translateY(-5px);
+}
+
+#playListBtn, #downloadBtn {
+    width: 38px;
+    outline: none;
+    height: 23px;
+    background-image: linear-gradient(to bottom, rgb(250, 250, 250), rgb(220, 220, 220));
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 12px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 0 2px #353535;
+    color: rgb(115, 115, 115);
+    transform: translateY(-34px);
+    cursor: default;
+}
+
+#playListBtn {
+    float: left;
+}
+
+#downloadBtn {
+    padding-top: 3px;
+    float: right;
+}
+
+#downloadBtn > i {
+    font-size: 18px;
+}
+
+#search {
+    height: 22px;
+    border-radius: 3px;
+    box-shadow: 0 0 1px black;
+    overflow: hidden;
+    border: 1px solid #999;
+    margin: 12px 15px 0 68px;
+}
+
+#searchWayBtn {
+    background-color: white;
+    outline: none;
+    border: none;
+    position: relative;
+    width: 28px;
+    text-align: left;
+    float: left;
+    cursor: default;
+}
+
+#searchWayBtn > i.icon-search {
+    margin-left: 2px;
+    font-size: 13px;
+    color: rgb(115, 115, 115);
+}
+#searchWayBtn > i.icon-chevron-down::before {
+    position: absolute;
+    font-size: 10px;
+    transform: scale(0.7);
+    left: 12px;
+    top: 4px;
+    color: rgb(115, 115, 115);
+}
+
+#searchByBox{
+    position: absolute;
+    left: 10px;
+    top: 40px;
+    width: 150px;
+    background-color: rgb(242,242,242);
+    border: 1px solid #c8c8c8;
+    box-shadow: 2px 2px 2px rgb(115, 115, 115);
+    font-size: 12px;
+    z-index: 9;
+    display: none;
+}
+#searchByBox>div>div{
+    margin-left: 22px;
+    line-height: 22px;
+    height: 22px;
+    padding-left: 15px;
+}
+#searchByBox>div>i{
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+    background-color: rgb(144,200,246);
+    float: left;
+    line-height: 20px;
+    text-align: center;
+    color: #4f4f4f;
+    display: none;
+}
+#searchByBox>div>i::before{
+    transform: scale(0.8);
+}
+#searchByBox>div:hover{
+    background-color: rgb(145,201,247);
+    cursor: default;
+    user-select: none;
+}
+
+#search > div > input {
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+/*//歌单*/
+#sheet {
+    width: 230px;
+    height: 100%;
+    border: 1px solid #ddd;
+    float: left;
+}
+
+#sheet > div > div > i {
+    color: rgb(115, 115, 115);
+    font-size: 17px;
+    margin-right: 10px;
+}
+
+#musicList {
+    margin-left: 230px;
+    margin-right: 0;
+    border-top: 1px solid #ddd;
+}
+
+#musicList > table tr th {
+    font-size: 10px;
+    font-weight: 500;
+    height: 22px;
+    line-height: 22px;
+    user-select: none;
+}
+
+#musicList > table td {
+    cursor: default;
+}
+
+.fengexian {
+    height: 18px;
+    margin-top: 2px;
+    background-color: #b3adad;
+    width: 2px;
+    float: right;
+    opacity: 0.3;
+    margin-right: 2px;
+}
+
+.moveCol {
+    cursor: ew-resize;
+}
+
+.tableName{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listTr {
+    font-size: 12px;
+    line-height: 22px;
+    height: 22px;
+    white-space: nowrap;
+}
+
+tr.backColor {
+    background-color: rgb(243, 243, 243);
+}
+
+.listBtn {
+    text-align: center;
+    transform: translateX(-2px);
+}
+
+.listBtn > .icon {
+    color: rgb(19, 135, 254);
+}
+
+tr.checkMusic {
+    background-color: rgb(38, 135, 251);
+    color: white;
+}
+
+.checkMusic > td > .icon {
+    color: white;
+}
+
+.header3 div.popover {
+    width: 350px;
+    max-width: 350px;
+    background-color: rgb(245, 245, 245);
+}
+
+.header3 div.popover h3.popover-title {
+    font-size: 14px;
+    border-bottom: none;
+    z-index: 1;
+    position: relative;
+}
+
+.header3 div.popover-content {
+    width: 100%;
+    overflow: auto;
+    background-color: rgb(245, 245, 245);
+    max-height: 500px;
+    padding: 3px;
+}
+
+.header3 div.popover-content .timeDiv {
+    float: right;
+    height: 100%;
+    width: 40px;
+    text-align: center;
+    line-height: 45px;
+    transform: translateY(-45px);
+    margin-right: 15px;
+}
+
+.playListDiv {
+    height: 45px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.playListDiv:hover {
+    position: relative;
+}
+
+.playListDiv2 {
+    margin: 0 0 0 75px;
+    height: 100%;
+    padding-top: 3px;
+    border-bottom: 1px solid #ddd;
+}
+
+.playListDiv3 {
+    margin: 0 40px 0 0;
+    height: 100%;
+    cursor: default;
+}
+
+.deleteListMusicBtn {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: rgb(255, 57, 46);
+    left: 15px;
+    top: 0;
+    border: 2px solid whitesmoke;
+    font-size: 26px;
+    line-height: 12px;
+    color: whitesmoke;
+    text-align: center;
+    cursor: default;
+}
+
+#clearPlayList {
+    color: rgb(19, 135, 254);
+    font-size: 14px;
+    cursor: default;
+    margin-left: 50%;
+    transform: translateX(-14px);
+    line-height: 30px;
+}
+
+#allPlayList {
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 10px;
+    margin: 20px auto 3px 10px;
+    cursor: default;
+}
+
+#ArtistList {
+    width: 35%;
+    height: 100%;
+    overflow: auto;
+    float: left;
+    border-right: 1px solid #ddd;
+}
+
+#albumAndMusic {
+    margin-left: 35%;
+    height: 100%;
+    overflow: auto;
+}
+
+.checkMusicOfAlbum {
+    background-color: rgb(38, 135, 251);
+    color: white;
+    border: none;
+}
+
+#rightMenu {
+    background-color: rgb(242, 242, 242);
+    width: 200px;
+    position: absolute;
+    border: 1px solid #c8c8c8;
+    box-shadow: 2px 2px 2px rgb(115, 115, 115);
+    padding: 2px;
+    cursor: default;
+    user-select: none;
+    transition: opacity linear 0.1s;
+}
+
+#rightMenu > div > div {
+    padding: 0 25px;
+}
+
+#rightMenu > div > div:hover {
+    background-color: rgb(145, 201, 247);
+}
+
+.artistHead {
+    width: 46px;
+    height: 46px;
+    float: left;
+    margin: 2px 10px;
+    border-radius: 50%;
+    line-height: 46px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+}
