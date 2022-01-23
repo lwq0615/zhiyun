@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "dialog":"/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "icon":"/miniprogram_npm/weui-miniprogram/icon/icon"
+  },
+  "navigationBarTitleText": "歌单",
+  "enablePullDownRefresh": true
+}

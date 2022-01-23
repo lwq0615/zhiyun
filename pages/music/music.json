@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "half-screen-dialog":"/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "musicList": "/components/musicList/musicList"
+  },
+  "navigationBarTitleText": "音乐",
+  "enablePullDownRefresh": false
+}

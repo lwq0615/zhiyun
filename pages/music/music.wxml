@@ -1,0 +1,84 @@
+<!--pages/music/music.wxml-->
+<view style="font-size: {{0.04*clientWidth+'px'}};">
+    <view style="font-size: 60rpx;font-weight: 600;border-bottom: 1px solid #DDDDDD;padding: 9rpx 0;margin: 0 35rpx;">资料库</view>
+    <view style="background-color: {{btnColor['播放列表']}};">
+        <view 
+            data-name="播放列表" 
+            hover-class="listHover"
+            class="list"
+            bindtap="showSheets"
+        >播放列表</view>
+    </view>
+    <view style="background-color: {{btnColor['艺人']}};">
+        <view 
+            data-name="艺人" 
+            hover-class="listHover"
+            class="list"
+            bindtap="showArtists"
+        >艺人</view>
+    </view>
+    <view style="background-color: {{btnColor['专辑']}};">
+        <view 
+            data-name="专辑" 
+            hover-class="listHover"
+            class="list"
+            bindtap="showAlbums"
+        >专辑</view>
+    </view>
+    <view style="background-color: {{btnColor['歌曲']}};">
+        <view 
+            data-name="歌曲" 
+            hover-class="listHover"
+            class="list"
+            bindtap="sheetInfo"
+        >歌曲</view>
+    </view>
+</view>
+<view class="footer-audio-controll" bindtap="showDialog">
+    <image class="audio-play-cover" src="{{coverImg}}" mode="aspectFillaspectFill"></image>
+    <view class="audio-play-title">
+        {{name}}
+    </view>
+    <view class="audio-play-control">
+        <image src="{{pauseSrc}}" class="audio-play-control-btn" style="margin-right: 20rpx;" catchtap="playAndPause"></image>
+        <image src="/image/next.png" class="audio-play-control-btn" catchtap="nextMusic"></image>
+    </view>
+</view>
+<half-screen-dialog
+    show="{{showHalf}}"
+    mask="{{true}}"
+    closabled="{{false}}"
+    extClass="half-screen-dialog"
+>
+    <view class="footer-audio-controll" slot="title" style="top: 0;left: 0;right: 0;bottom: auto;">
+        <image class="audio-play-cover" src="{{coverImg}}" mode="aspectFillaspectFill"></image>
+        <view class="audio-play-title">
+            {{name}}
+        </view>
+        <view class="audio-play-control">
+            <image src="{{pauseSrc}}" class="audio-play-control-btn" style="margin-right: 20rpx;" catchtap="playAndPause"></image>
+            <image src="/image/next.png" class="audio-play-control-btn" catchtap="nextMusic"></image>
+        </view>
+    </view>
+    <!-- 进度条 -->
+    <view slot="title" class="audio-play-progress">
+        <view style="width: 100%;height:6px;background-color: #DDDDDD;border-radius: 3px;position: relative;margin: 0 30rpx;">
+            <view style="width: {{progress+'%'}};background-color: rgb(234, 68, 90);height: 100%;border-radius: 3px;"></view>
+            <view 
+                style="height: 20px;width: 20px;border-radius: 50%;background-color: white;position: absolute;left: {{progress+'%'}};top: 50%;transform: translate(-50%,-50%);"
+                catchtouchmove="moveProgress"
+                catchtouchend="changeProgress"
+            ></view>
+        </view>
+    </view>
+    <view class="audio-play-list" slot="desc">
+        <view style="color: rgb(234, 68, 90);">播放列表</view>
+        <!-- 音乐列表 -->
+        <musicList 
+            musics="{{playList}}" 
+            bindmusicTap="playMusic" 
+            count="{{playList.length}}"
+            height="600"
+        ></musicList>
+    </view>
+</half-screen-dialog>

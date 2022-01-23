@@ -1,0 +1,55 @@
+<!--pages/album/album.wxml-->
+<view style="font-size: {{0.04*clientWidth+'px'}};">
+    <view style="font-size: 1.3em;margin: 0.5em 1em 0 1em;line-height: 1.3em;" class="clear">
+        我的相册
+        
+        <view style="padding-left: 0.5em;float: right;">
+            <icon 
+                color="{{deleteFlg ? '#EA644A' : '#3280fc'}}" 
+                icon="{{deleteFlg ? 'delete-on' : 'delete'}}" 
+                size="{{0.06*clientWidth}}" 
+                bindtap="dleteAlbum"
+            ></icon>
+        </view>
+        
+        <view style="padding-left: 0.5em;float: right;">
+            <icon 
+                color="#3280fc" 
+                icon="add" 
+                size="{{0.06*clientWidth}}" 
+                bindtap="addAlbum"
+            ></icon>
+        </view>
+    </view>
+
+    <view id="albums">
+        <view class="album" wx:for="{{albums}}" wx:key="id" bindtap="albumInfo" data-album="{{item}}">
+            <image 
+                class="coverImg" 
+                src="{{URL+'/getPicByUrl?url='+item.path+'&comp=true'}}" 
+                mode="aspectFill"
+                lazy-load="true"
+            ></image>
+            <view style="font-size: 1em;text-align: left;">{{item.name}}</view>
+            <view style="font-size: 1em;text-align: left;color: #808080;">{{item.count}}</view>
+        </view>
+    </view>
+    <dialog 
+        id="showAddAlbumDialog"
+        title="新增相册" 
+        show="{{showAddAlbumDialog}}"
+        buttons="{{[{text:'取消'},{text:'确定'}]}}"
+        bindbuttontap="buttontap"
+        bindclose="colseDialog"
+    >
+        <input value="{{inputName}}" bindinput="inputName" type="text" style="line-height: 2em;height: 2em;" placeholder="请输入相册名称"/>
+    </dialog>
+    <dialog 
+        id="showDeleteAlbumDialog"
+        title="删除相册" 
+        show="{{showDeleteAlbumDialog}}"
+        buttons="{{[{text:'取消'},{text:'确定'}]}}"
+        bindbuttontap="deleteAlbum"
+    >
+    </dialog>
+</view>

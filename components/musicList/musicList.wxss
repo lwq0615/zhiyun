@@ -1,0 +1,7 @@
+.music{
+    transition: background-color linear 0.1s;
+}
+
+.musicHover{
+    background-color: #dddddd;
+}

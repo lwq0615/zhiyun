@@ -1,0 +1,98 @@
+/* pages/music/music.wxss */
+.list{
+    border-bottom: 1px solid #dddddd;
+    font-size: 1.3em;
+    height: 2.3em;
+    line-height: 2.2em;
+    padding: 0 30rpx;
+    background-color: white;
+    color: rgb(234, 68, 90);
+}
+.list::after{
+    content: '>';
+    height: 2.3em;
+    line-height: 2.2em;
+    float: right;
+    color: #b3adad;
+}
+
+.listHover{
+    background-color: rgb(234, 68, 90);
+    color: white;
+}
+
+.footer-audio-controll{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 140rpx;
+    background-color: rgba(244,243,238,0.5);
+    display: flex;
+    align-items: center;
+    border-radius: 20rpx;
+}
+
+.audio-play-cover{
+    min-width: 110rpx;
+    min-height: 110rpx;
+    height: 110rpx;
+    width: 110rpx;
+    border-radius: 10rpx;
+    margin: 0 30rpx;
+    box-shadow: 0 5rpx 5rpx rgba(0, 0, 0, 0.3);
+}
+
+.audio-play-title{
+    font-size: 37rpx;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.audio-play-control{
+    margin-right: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.audio-play-control-btn{
+    height: 65rpx;
+    width: 65rpx;
+}
+.audio-play-progress{
+    position: fixed;
+    top: 140rpx;
+    left: 0;
+    right: 0;
+    height: 40rpx;
+    background-color: rgba(244,243,238,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30rpx;
+}
+
+.audio-play-progress progress{
+    width: 100%;
+}
+
+.half-screen-dialog{
+    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+    background: #f3eded;
+    padding: 0;
+}
+
+.audio-play-list{
+    margin-top: 60rpx;
+    padding: 20rpx 30rpx 30rpx 30rpx;
+    overflow: auto;
+    background-color: #e2e0e0;
+    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+    font-size: 35rpx;
+}
+
+.weui-half-screen-dialog__bd, .weui-half-screen-dialog__ft{
+    padding: 0;
+}

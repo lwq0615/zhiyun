@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/login/login",
+    "pages/album/album",
+    "pages/music/music",
+    "pages/albumInfo/albumInfo",
+    "pages/sheets/sheets",
+    "pages/sheetInfo/sheetInfo",
+    "pages/artistsOrAlbum/artistsOrAlbum",
+    "pages/artistOrAlbumInfo/artistOrAlbumInfo"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#F2F2F7",
+    "navigationBarTitleText": "智云",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "backgroundColor": "#EBF2F9",
+    "selectedColor":"#3280fc",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/homeA.png"
+      },
+      {
+        "pagePath": "pages/album/album",
+        "text": "相册",
+        "iconPath": "image/album.png",
+        "selectedIconPath": "image/albumA.png"
+      },
+      {
+        "pagePath": "pages/music/music",
+        "text": "音乐",
+        "iconPath": "image/music.png",
+        "selectedIconPath": "image/musicA.png"
+      }
+    ] 
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

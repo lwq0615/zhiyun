@@ -1,0 +1,109 @@
+<!--pages/sheetInfo/sheetInfo.wxml-->
+<view style="font-size: {{0.045*clientWidth+'px'}};margin: 0 1em;">
+    <view style="height: 8em;width: 100%;margin: 1em 0;">
+        <image 
+            id="coverImg" 
+            class="{{editFlg ? 'canChange' : ''}}" 
+            src="{{URL+'/getPicByUrl?url='+sheet.coverImg+'&comp=true'}}" 
+            bindtap="changeCoverImg"
+            mode="aspectFill" 
+        ></image>
+        <view style="margin-left: 9em;height: 100%;">
+            <view hidden="{{editFlg}}" style="font-weight: 600;height: 6.3em;">{{sheet.sheetName || '全部歌曲'}}</view>
+            <view hidden="{{!editFlg}}" style="font-weight: 600;height: 6.3em;">
+                <input type="text" value="{{inputName}}" bindinput="inputName"/>
+            </view>
+            <view>
+                <!-- 添加到歌单按钮 -->
+                <icon 
+                    wx:if="{{checkMusicsFlg}}"
+                    color="#EA445A" 
+                    icon="add" 
+                    size="{{0.07*clientWidth}}" 
+                    bindtap="showMenu"
+                ></icon>
+                <!-- 删除按钮 -->
+                <icon 
+                    wx:if="{{checkMusicsFlg}}"
+                    color="#EA445A" 
+                    icon="delete" 
+                    size="{{0.07*clientWidth}}" 
+                    bindtap="showDeleteMusicsDialog"
+                ></icon>
+                <!-- 全选按钮 -->
+                <icon 
+                    wx:if="{{checkMusicsFlg}}"
+                    color="#EA445A" 
+                    icon="done2" 
+                    type="{{checkAllMusicFlg ? 'field' : 'outline'}}"
+                    size="{{0.07*clientWidth}}" 
+                    bindtap="checkAllMusic"
+                ></icon>
+                <text style="color: #EA445A;float: right;" bindtap="edit" wx:if="{{sheet.sheetName}}">{{editFlg ? '完成' : '编辑'}}</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- //存放按钮 -->
+    <view id="btns">
+        <button 
+            class="playBtn" 
+            style="width: 95%;margin: 0.6em 5% 0.6em 0"
+            data-name="播放"
+            bindtap="playMusic"
+        >
+            播放
+        </button>
+        <button 
+            class="playBtn"
+            style="width: 95%;margin: 0.6em 0 0.6em 5%"
+            bindtap="checkMusics"
+        >
+            {{checkMusicsFlg ? '完成' : '多选'}}
+        </button>
+    </view>
+    
+    <!-- 上传按钮 -->
+    <button 
+        class="playBtn"
+        style="width: 100%;margin-bottom: 0.6em;"
+        hidden="{{sheet.sheetName}}"
+        bindtap="uploadMusic"
+        loading="{{uploadingFlg}}"
+    >
+        上传音乐
+    </button>
+    <view style="border-bottom: 1px solid #DDDDDD;">
+    </view>
+
+    <!-- 音乐列表 -->
+    <musicList 
+        musics="{{musics}}" 
+        bindmusicTap="{{checkMusicsFlg ? 'checkMusics2' : 'playMusic'}}" 
+        bindmusicLongTap="musicLongTap"
+        bindscrolltolower="getMusics"
+        height="1000"
+        count="{{count}}"
+    ></musicList>
+
+    <view style="height: 70rpx;width: 100%;"></view>
+
+    <!-- 打开歌单菜单 -->
+    <actionsheet
+        title="添加到歌单"
+        show="{{showMenu}}"
+        actions="{{sheets}}"
+        bindactiontap="cilckOption"
+    >
+    </actionsheet>
+
+    <!-- 确定删除弹窗 -->
+    <dialog 
+        id="showDeleteMusicsDialog"
+        title="删除歌曲" 
+        show="{{showDeleteMusicsDialog}}"
+        buttons="{{[{text:'取消'},{text:'确定'}]}}"
+        bindbuttontap="deleteCheckMusics"
+    >
+    </dialog>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/artistOrAlbumInfo/artistOrAlbumInfo.wxml-->
+<view style="font-size: 50rpx;margin: 0 35rpx;padding: 15rpx 0;border-bottom: 1px solid #DDDDDD;">{{artist || album}}</view>
+<!-- 音乐列表 -->
+<musicList 
+    musics="{{musics}}" 
+    bindmusicTap="playMusic" 
+    count="{{count}}" 
+    bindscrolltolower="getMusics"
+    height="1200"
+></musicList>

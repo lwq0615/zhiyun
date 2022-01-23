@@ -1,0 +1,23 @@
+<!--pages/artists/artists.wxml-->
+<view style="font-size: 60rpx;padding: 9rpx 35rpx;">{{by === 'artist' ? '艺人' : '专辑'}}</view>
+<view 
+    wx:for="{{data.keys}}" 
+    wx:key="*this" 
+    wx:for-item="key" 
+    wx:for-index="num"
+    style="margin: 5rpx 0 20rpx 0;"
+>
+    <view style="font-weight: 600;margin-left: 35rpx;">{{key}}</view>
+    <navigator 
+        class="list"
+        wx:for="{{data[key]}}" 
+        wx:key="*this" 
+        style="height: 120rpx;"
+        url="/pages/artistOrAlbumInfo/artistOrAlbumInfo?{{by === 'artist' ? 'artist' : 'album'}}={{item}}"
+    >
+        <view style="margin: 0 35rpx;">
+            <view class="head" style="background-color: {{colors[(num*(index+1))%colors.length]}};">{{item[0]}}</view>
+            <view class="list-name">{{item}}</view>
+        </view>
+    </navigator>
+</view>

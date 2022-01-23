@@ -1,0 +1,32 @@
+<!--pages/login/login.wxml-->
+<image src="/image/海洋里的海豚.png" class="back-img-bottom"></image>
+<image src="/image/地球.png" class="back-img-top"></image>
+<image src="/image/紫色植物花.png" class="back-img-centern"></image>
+        <view class="show-box" style="height: {{loginOrZhuce ? '0' : '600rpx'}}">
+            <form bindsubmit="login">
+                <view class="title">
+                    <view bindtap="toLogin" style="border-bottom: 3px solid white">登录</view>
+                    <view bindtap="toZhuce">注册</view>
+                </view>
+                <input class="inputText" type="number" placeholder="手机号" placeholder-class="input-place" name="username" maxlength="11"/>
+                <input class="inputText" type="text" placeholder-class="input-place" password="true" placeholder="密码" name="password"/>
+                <button form-type="submit" class="btn">登录</button>
+            </form>
+        </view>
+
+        <view class="show-box" style="height: {{!loginOrZhuce ? '0' : '800rpx'}}">
+            <form bindsubmit="zhuce">
+                <view class="title">
+                    <text bindtap="toLogin">登录</text>
+                    <text bindtap="toZhuce" style="border-bottom: 3px solid white">注册</text>
+                </view>
+                <input class="inputText" type="number" placeholder="手机号" name="username" maxlength="11"/>
+                <input class="inputText" type="text" password="true" placeholder="密码" name="password"/>
+                <input class="inputText" type="text" password="true" placeholder="确认密码" name="password2"/>
+                <view style="display: flex;width: 80%;margin: 0 auto;">
+                    <input type="text" name="yzm" placeholder="验证码" class="inputText" style="margin-top: 0;flex: 1;"/>
+                    <canvas id="yzm" type="2d" style="width: 200rpx;height: 100rpx;margin-left: 20rpx;" bindtap="loadYzm"></canvas>
+                </view>
+                <button form-type="submit" class="btn">注册</button>
+            </form>
+        </view>

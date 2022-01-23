@@ -1,0 +1,53 @@
+<!--pages/sheets/sheets.wxml-->
+<view style="font-size: {{0.04*clientWidth+'px'}};margin: 0 1em;">
+    <view style="font-size: 2em;font-weight: 600;padding: 0.3em 0;">播放列表</view>
+    <view class="sheet" bindtap="addSheet">
+        <image class="addImage sheetImage"></image>
+        <view class="sheetName" style="color: rgb(234, 68, 90);border-top: 1px solid #DDDDDD;">新建播放列表...</view>
+    </view>
+    <view 
+        wx:for="{{sheets}}" 
+        wx:key="id" 
+        class="sheet" 
+        hover-class="sheetHover"
+        bindtap="sheetInfo" 
+        data-sheet="{{item}}" 
+    >
+        <image 
+            class="sheetImage" 
+            src="{{URL+'/getPicByUrl?url='+item.coverImg+'&comp=true'}}" 
+            mode="aspectFill"
+            lazy-load="true"
+        ></image>
+        <view class="sheetName">
+            {{item.sheetName}}
+            <icon 
+                color="#EA445A" 
+                icon="delete" 
+                size="{{0.07*clientWidth}}" 
+                style="float: right;"
+                catchtap="deleteSheet"
+                data-sheet="{{item}}"
+            ></icon>
+        </view>
+    </view>
+
+    
+    <dialog 
+        title="新建播放列表" 
+        show="{{showAddSheetDialog}}"
+        buttons="{{[{text:'取消'},{text:'确定'}]}}"
+        bindbuttontap="buttontap"
+    >
+        <input bindinput="inputName" type="text" style="line-height: 2em;height: 2em;" value="{{inputName}}" placeholder="请输入相册名称"/>
+    </dialog>
+
+    <dialog 
+        id="showDeleteSheetDialog"
+        title="删除播放列表" 
+        show="{{showDeleteSheetDialog}}"
+        buttons="{{[{text:'取消'},{text:'确定'}]}}"
+        bindbuttontap="deleteSheet2"
+    >
+    </dialog>
+</view>

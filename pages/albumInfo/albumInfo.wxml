@@ -1,0 +1,105 @@
+<!--pages/albumInfo/albumInfo.wxml-->
+<view style="font-size: {{0.04*clientWidth+'px'}};">
+    <view class="nav">
+        {{!type ? "全部" : typeName}}
+        <!-- 多选按钮 -->
+        <view style="padding-left: 0.5em;float: right;">
+            <icon 
+                color="#3280fc" 
+                icon="{{deleteFlg ? 'close' : 'done2'}}" 
+                size="{{0.06*clientWidth}}" 
+                bindtap="checkPhoto"
+            ></icon>
+        </view>
+        
+
+        <!-- 移动按钮 -->
+        <view hidden="{{!deleteFlg || !type}}" style="float: right;padding-left: 0.5em;">
+            <icon 
+                color="#3280fc" 
+                icon="album" 
+                size="{{0.06*clientWidth}}" 
+                bindtap="movePhotosDialog"
+            ></icon>
+        </view>
+        
+
+        <!-- 下载按钮 -->
+        <view hidden="{{!deleteFlg}}" style="float: right;padding-left: 0.5em;">
+            <icon 
+                color="#3280fc" 
+                icon="download" 
+                size="{{0.06*clientWidth}}" 
+                bindtap="downloadPhotos"
+            ></icon>
+        </view>
+       
+
+       <!-- 删除按钮 -->
+       <view hidden="{{!deleteFlg}}" style="float: right;padding-left: 0.5em;">
+           <icon 
+               color="#EA644A" 
+               icon="delete" 
+               size="{{0.06*clientWidth}}" 
+               bindtap="deletePhoto"
+           ></icon>
+       </view>
+        
+
+        <!-- 上传按钮 -->
+        <view hidden="{{deleteFlg || !type}}" style="float: right;padding-left: 0.5em;">
+            <icon 
+                color="#3280fc" 
+                icon="camera" 
+                size="{{0.06*clientWidth}}" 
+                bindtap="addPhoto"
+            ></icon>
+        </view>
+
+        <view wx:if="{{uploadingFlg}}" style="text-align: center;background-color: #DDDDDD;">
+            正在上传第{{uploadingCount}}张图片,共{{allUploadCount}}张...
+        </view>
+        
+    </view>
+
+    <!-- 照片列表 -->
+    <view id="album">
+        <view wx:for="{{photos}}" wx:key="id" id="image" class="{{checkedImage['s'+item.id] ? 'checked' : ''}}">
+            <image 
+                src="{{URL+'/getPicByUrl?url='+item.path+item.fileName+'&comp=true'}}" 
+                mode="aspectFill" 
+                lazy-load="true"
+                style="background-color: whitesmoke;"
+                bindload="loadImages"
+                data-photo="{{item}}"
+                bindtap="bigImage"
+                bindlongtap="imgLongTap"
+                bindtouchend="imgLongTouched"
+            >
+            </image>
+        </view>
+    </view>
+    <view id="count">
+        {{count}}张照片
+    </view>
+
+    <!-- 确定删除弹窗 -->
+    <dialog 
+        id="showDeletePhotoDialog"
+        title="删除照片" 
+        show="{{showDeletePhotoDialog}}"
+        buttons="{{[{text:'取消'},{text:'确定'}]}}"
+        bindbuttontap="deletePhoto"
+    >
+    </dialog>
+
+    <!-- 要移动的目标相册弹窗 -->
+    <actionsheet
+        title="移动到相册"
+        show="{{showMovePhotosDialog}}"
+        actions="{{types}}"
+        bindactiontap="movePhotos"
+    >
+    </actionsheet>
+</view>
+

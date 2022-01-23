@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "half-screen-dialog":"/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  },
+  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true
+}

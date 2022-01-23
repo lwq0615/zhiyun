@@ -1,0 +1,31 @@
+/* pages/album/album.wxss */
+
+.clear::after,
+.clear::before{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#albums {
+    margin: 0 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.album {
+    text-align: center;
+    margin: 0.5em auto;
+}
+
+.coverImg {
+    width: 11em;
+    height: 11em;
+    border-radius: 0.3em;
+    background-color: whitesmoke;
+    position: relative;
+}
+
+.weui-dialog {
+    top: 35%;
+}

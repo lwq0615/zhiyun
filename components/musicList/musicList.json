@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "icon":"/miniprogram_npm/weui-miniprogram/icon/icon"
+    },
+    "component": true
+}

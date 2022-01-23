@@ -1,0 +1,67 @@
+
+
+<view style="padding-left: 40rpx;font-weight: 600;font-size: 50rpx;margin-top: 50rpx;">个人资料</view>
+<view id="userInfo" bindtap="showEditDialog" data-show="{{true}}">
+    <image src="{{userInfo.headImg}}" class="headImg" mode="aspectFill"/>
+    <view style="flex: 1;padding-left: 30rpx;">
+        <view style="font-size: 40rpx;">{{userInfo.userName}}</view>
+        <view>ID：{{userInfo.userId}}</view>
+    </view>
+    <image src="/image/right.png" style="width: 40rpx;height: 40rpx;"></image>
+</view>
+
+<view class="infoBox">
+    <navigator class="info-item" open-type="switchTab" hover-class="none" url="/pages/album/album">
+        <image src="/image/albumA.png" class="info-item-image"></image>
+        <view class="info-item-text">
+            <view style="flex: 1;">上传的照片</view>
+            <text style="color: rgb(171, 171, 174);">{{userInfo.photoCount}}</text>
+            <image src="/image/right.png" style="width: 30rpx;height: 30rpx;margin-right: 40rpx;margin-left: 10rpx;"></image>
+        </view>
+    </navigator>
+    <navigator class="info-item" open-type="switchTab" hover-class="none" url="/pages/music/music">
+        <image src="/image/musicA.png" class="info-item-image"></image>
+        <view class="info-item-text" style="border-bottom: none;">
+            <view style="flex: 1;">上传的音乐</view>
+            <text style="color: rgb(171, 171, 174);">{{userInfo.musicCount}}</text>
+            <image src="/image/right.png" style="width: 30rpx;height: 30rpx;margin-right: 40rpx;margin-left: 10rpx;"></image>
+        </view>
+    </navigator>
+</view>
+
+
+<view class="logout" bindtap="logout">
+    退出登录
+</view>
+
+
+
+<!-- 弹出框 -->
+<half-screen-dialog
+    show="{{showEditDialog}}"
+    buttons="{{halfButtons}}"
+    closabled="{{false}}"
+    id="half-screen-dialog"
+    extClass="half-screen-dialog"
+    bindbuttontap="buttonTap"
+>
+    <view style="text-align: center;" slot="title">编辑资料</view>
+    <view slot="desc">
+        <image 
+            src="{{form.headImg}}" 
+            class="editImg" 
+            style="margin: 0 auto;display: block;background-color: #dddddd;"
+            bindtap="uploadHeadImg"
+            mode="aspectFill"
+        ></image>
+        
+        <view class="infoBox">
+            <view class="info-item">
+                <view class="info-item-text" style="border-bottom: none;">
+                    <text style="font-weight: 600;">用户名：</text>
+                    <input type="text" placeholder="{{form.userName}}" value="{{form.userName}}" data-name="userName" bindinput="inputForm"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</half-screen-dialog>

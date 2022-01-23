@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "icon":"/miniprogram_npm/weui-miniprogram/icon/icon",
+    "dialog":"/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "actionsheet":"/miniprogram_npm/weui-miniprogram/actionsheet/actionsheet"
+  },
+  "navigationBarTitleText": "相册",
+  "enablePullDownRefresh": true
+}

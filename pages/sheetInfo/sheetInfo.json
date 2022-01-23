@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "icon":"/miniprogram_npm/weui-miniprogram/icon/icon",
+    "dialog":"/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "musicList": "/components/musicList/musicList",
+    "actionsheet":"/miniprogram_npm/weui-miniprogram/actionsheet/actionsheet"
+  },
+  "navigationBarTitleText": "详情",
+  "enablePullDownRefresh": true
+}
