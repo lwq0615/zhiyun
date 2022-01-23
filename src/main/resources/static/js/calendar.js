@@ -380,6 +380,9 @@ function calendar() {
         //初始化日历
         $('#calendar').calendar({
             lang: "zh_cn",
+            data: {
+                calendars: {name: 'work', title: '工作', desc: '这是一个工作日历', color: '#ff0000'}
+            },
             //点击事件触发
             clickEvent: function (event) {
                 //将事件信息填入dialog

@@ -259,11 +259,6 @@ $('#myPager').pager({
     lang:'zh_cn'
 });
 
-function goPage() {
-    let myPager = $('#myPager').data('zui.pager');
-    getPhotos(parseInt($(".pageNum")[0].value),myPager.state.recPerPage)
-}
-
 //新建相册
 function changeType(){
     let newTypeNm = $("#newTypeNm")[0].value

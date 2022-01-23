@@ -7,8 +7,8 @@
     <title>相册</title>
     <link rel="shortcut icon" href="/image/bitbug_favicon.ico" type="image/x-icon" />
     <link href="/css/zui.min.css" rel="stylesheet"/>
-    <link href="/css/album.css" rel="stylesheet"/>
     <link href="/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="/css/album.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -41,17 +41,9 @@
         </div>
         <ul id="myPager" class="pager"
             data-ride="pager" data-page="1"
-            data-elements="first_icon,nav,last_icon,size_menu,total_text"
+            data-elements="first_icon,prev_icon,nav,next_icon,last_icon,total_text,size_menu,goto"
             data-rec-total="1000">
         </ul>
-        <div style="display: inline-block;width: 100px;margin: 20px 0;">
-            <div class="input-group">
-                <input type="text" class="form-control pageNum" value="1">
-                <span class="input-group-btn">
-            <button style="outline: none" class="btn btn-default" type="button" onclick="goPage()">GO</button>
-          </span>
-            </div>
-        </div>
     </div>
 </div>
 

@@ -138,3 +138,7 @@ div.checkIcon {
 #rightMenu > div > div:hover {
     background-color: rgb(145, 201, 247);
 }
+
+input.pager-goto-input{
+    width: 70px !important;
+}
