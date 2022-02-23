@@ -141,7 +141,6 @@ function getPhotos(page,size,type){
         for(let item of $("div.photoBox")){
             item.remove()
         }
-        let W = document.documentElement.clientWidth;
         let lazyLoadImgs = []
         for(let i in data.photos){
             let div = document.createElement("div")

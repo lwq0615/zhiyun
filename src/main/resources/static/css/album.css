@@ -32,8 +32,12 @@ body {
     margin-bottom: 0;
 }
 
+#photos-panel{
+    position: relative;
+}
+
 #photos-panel .panel-body {
-    /*瀑布流布局*/
+    /*!*瀑布流布局*!*/
     /*-moz-column-count:4;*/
     /*!* Firefox *!*/
     /*-webkit-column-count:4;*/

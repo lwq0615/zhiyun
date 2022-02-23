@@ -1,16 +1,10 @@
 package com.manager.demo.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.manager.demo.mapper.*;
-import com.manager.demo.pojo.Event;
-import com.manager.demo.pojo.Power;
 import com.manager.demo.pojo.User;
-import com.manager.demo.service.PowerService;
 import com.manager.demo.service.UserService;
 import com.manager.demo.tool.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +18,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
 
 
     @GetMapping("/")
