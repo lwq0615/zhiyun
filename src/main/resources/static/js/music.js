@@ -337,20 +337,6 @@ function btnClick(ele,click) {
 let playerHeight = window.getComputedStyle(document.getElementById("player")).height.replace(/[A-Za-z]/ig,"")*1
 document.getElementById("body").style.height = playerHeight - 80 + "px"
 
-//音乐列表各列宽度设置
-let moveCol = document.querySelectorAll(".moveCol")
-moveCol.forEach(item => {
-    item.onmousedown = function (ev) {
-        let th = item.parentElement
-        let thWidth = window.getComputedStyle(th).width.replace(/[A-Za-z]/ig,"")*1
-        window.onmousemove = function (e) {
-            th.width = (thWidth+e.clientX-ev.clientX).toFixed(0)+"px"
-        }
-        window.onmouseup = function () {
-            window.onmousemove = function (){return false}
-        }
-    }
-})
 
 //选中的歌曲
 let checkMusicList = []
