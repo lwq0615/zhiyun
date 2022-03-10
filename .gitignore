@@ -29,6 +29,7 @@ public/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+/public/
 
 ### VS Code ###
 .vscode/
