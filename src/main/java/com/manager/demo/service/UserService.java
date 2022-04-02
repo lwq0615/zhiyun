@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.manager.demo.mapper.*;
 import com.manager.demo.pojo.Power;
 import com.manager.demo.pojo.User;
+import com.manager.demo.tool.Jwt;
 import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,7 @@ public class UserService {
         Map map = new HashMap();
         try{
             String token = request.getHeader("token");
-            String object = new String(Base64.getDecoder().decode(token.getBytes()));
-            map = (Map) JSONObject.parse(object);
+            map = Jwt.parse(token);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -55,8 +55,7 @@ public class UserService {
             urls.add(power.getUrl());
         }
         map.put("power",urls);
-        JSONObject object = new JSONObject(map);
-        return Base64.getEncoder().encodeToString(object.toString().getBytes());
+        return Jwt.getToken(map);
     }
 
 

@@ -71,12 +71,9 @@ if(location.pathname !== "/home.html"){
         url: "/pagePower?url="+location.pathname,
         type: "get"
     }).then(res => {
-        if(!res){//不需要权限判断的页面
+        if(!res){
             //判断用户是否有权限访问该页面
-            let user = JSON.parse(window.atob(localStorage.getItem("token")))
-            if(!user.power || !user.power.includes(location.pathname)){
-                location.href = "/home.html?msg="+"没有权限"
-            }
+            location.href = "/home.html?msg="+"没有权限"
         }
     })
 }

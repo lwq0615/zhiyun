@@ -1,6 +1,7 @@
 package com.manager.demo.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
+import com.manager.demo.tool.Jwt;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,8 +20,8 @@ public class PowerInterceptor implements HandlerInterceptor {
         String url = request.getRequestURI();
         //解析token
         try{
-            String object = new String(Base64.getDecoder().decode(token.getBytes()));
-            Map map = (Map) JSONObject.parse(object);
+
+            Map map = Jwt.parse(token);
             List<String> powers = (List<String>) map.get("power");
             if(powers != null && powers.contains(url)){
                 return true;

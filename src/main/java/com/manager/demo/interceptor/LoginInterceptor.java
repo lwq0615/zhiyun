@@ -1,10 +1,14 @@
 package com.manager.demo.interceptor;
 import com.alibaba.fastjson.JSONObject;
+import com.manager.demo.tool.Jwt;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.Data;
 import java.util.Base64;
+import java.util.Date;
 import java.util.Map;
 
 public class LoginInterceptor implements HandlerInterceptor {
@@ -17,17 +21,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(token != null && !token.equals("")){
             //解析token
             try{
-                String object = new String(Base64.getDecoder().decode(token.getBytes()));
-                Map map = (Map) JSONObject.parse(object);
+                Map map = Jwt.parse(token);
                 String userId = (String) map.get("userId");
                 int roleId = (int) map.get("role");
                 Integer id = (Integer) map.get("id");
-                long time = System.currentTimeMillis()/1000 -  Long.parseLong((String) map.get("time"));
-                if(time > 24*60*60){
-                    //token过期时间为一天
-                    response.sendError(402);
-                    return false;
-                }
                 if(userId != null && id != null){
                     //登录成功
                     request.setAttribute("userId",userId);
@@ -38,11 +35,22 @@ public class LoginInterceptor implements HandlerInterceptor {
                     response.sendError(401);
                     return false;
                 }
-            }catch (Exception e){
-                e.printStackTrace();
-                //有token但是token解析失败
-                response.sendError(401);
-                return false;
+            }catch (ExpiredJwtException je){
+                try {
+                    Date date = je.getClaims().getExpiration();
+                    long time = (date.getTime() - System.currentTimeMillis());
+                    if(time < 0){
+                        //token过期时间为一天
+                        response.sendError(402);
+                        return false;
+                    }
+                }catch (Exception e){
+                    //有token但是token解析失败
+                    e.printStackTrace();
+                    response.sendError(401);
+                }finally {
+                    return false;
+                }
             }
         }else{
             //没有登录
